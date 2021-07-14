@@ -1,6 +1,7 @@
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { getPath } from '@wordpress/url';
 import { useSelect } from '@wordpress/data';
 
@@ -9,6 +10,7 @@ import { useSelect } from '@wordpress/data';
  */
 import CategoryContextBar from '../category-context-bar';
 import PatternOrderSelect from '../pattern-order-select';
+import MenuLayout from '../menu-layout';
 import { getCategoryFromPath } from '../../utils';
 import Menu from '../menu';
 import { store as patternStore } from '../../store';
@@ -27,30 +29,39 @@ const PatternGridMenu = () => {
 	} );
 	return (
 		<>
-			<div className="pattern-grid-menu">
-				<nav>
-					<Menu
-						current={ categorySlug }
-						options={
-							categories
-								? categories.map( ( record ) => {
-										return {
-											value: `/${ getPath( record.link ) || '' }`,
-											slug: record.slug,
-											label: record.name,
-										};
-								  } )
-								: []
-						}
-						onClick={ ( event ) => {
-							event.preventDefault();
-							updatePath( event.target.pathname );
-						} }
-						isLoading={ isLoading }
+			<MenuLayout
+				left={
+					<nav>
+						<Menu
+							current={ categorySlug }
+							options={
+								categories
+									? categories.map( ( record ) => {
+											return {
+												value: `/${ getPath( record.link ) || '' }`,
+												slug: record.slug,
+												label: record.name,
+											};
+									  } )
+									: []
+							}
+							onClick={ ( event ) => {
+								event.preventDefault();
+								updatePath( event.target.pathname );
+							} }
+							isLoading={ isLoading }
+						/>
+					</nav>
+				}
+				right={
+					<PatternOrderSelect
+						options={ [
+							{ label: __( 'Newest', 'wporg-patterns' ), value: 'date' },
+							{ label: __( 'Favorites', 'wporg-patterns' ), value: 'favorite_count' },
+						] }
 					/>
-				</nav>
-				<PatternOrderSelect />
-			</div>
+				}
+			/>
 			<CategoryContextBar />
 		</>
 	);

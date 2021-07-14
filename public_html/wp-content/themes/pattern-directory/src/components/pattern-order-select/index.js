@@ -11,14 +11,13 @@ import { addQueryArgs, getQueryArg } from '@wordpress/url';
  */
 import { useRoute } from '../../hooks';
 
-const DEFAULT_ORDER_VALUES = [
-	{ label: 'Newest', value: 'date' },
-	{ label: 'Favorites', value: 'favorite_count' },
-];
-
-const PatternOrderSelect = () => {
+const PatternOrderSelect = ( { options } ) => {
 	const { path, replace } = useRoute();
 	const hideLabel = useViewportMatch( 'medium', '>=' );
+
+	if ( ! options ) {
+		return null;
+	}
 
 	return (
 		<div className="pattern-select-control">
@@ -27,7 +26,7 @@ const PatternOrderSelect = () => {
 				labelPosition="side"
 				hideLabelFromVision={ hideLabel }
 				value={ getQueryArg( window.location.href, 'orderby' ) }
-				options={ DEFAULT_ORDER_VALUES }
+				options={ options }
 				onChange={ ( value ) => {
 					const newUrl = addQueryArgs( path, { orderby: value } );
 
