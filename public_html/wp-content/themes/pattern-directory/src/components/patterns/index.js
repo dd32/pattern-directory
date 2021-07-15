@@ -12,6 +12,7 @@ import PatternThumbnail from '../pattern-thumbnail';
 import QueryMonitor from '../query-monitor';
 import BreadcrumbMonitor from '../breadcrumb-monitor';
 import { RouteProvider } from '../../hooks';
+
 import { store as patternStore } from '../../store';
 
 const Patterns = () => {
