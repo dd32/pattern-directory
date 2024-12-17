@@ -20,11 +20,11 @@ jobs:
               uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
               with:
                   node-version-file: '.nvmrc'
-                  cache: yarn
+                  cache: npm
 
             - name: Install JS dependencies
               run: |
-                  yarn
+                  npm install
 
             - name: Set PHP version
               uses: shivammathur/setup-php@e04e1d97f0c0481c6e1ba40f8a538454fe5d7709 # v2.21.2
@@ -39,8 +39,8 @@ jobs:
 
             - name: Lint JavaScript and Styles
               run: |
-                  yarn workspaces run lint:js --quiet
-                  yarn workspaces run lint:css
+                  npm run lint:js --workspaces -- --quiet
+                  npm run lint:css --workspaces
 
             - name: Lint PHP
               run: |

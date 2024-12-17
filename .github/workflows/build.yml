@@ -16,7 +16,7 @@ jobs:
               uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
               with:
                   node-version-file: '.nvmrc'
-                  cache: yarn
+                  cache: npm
 
             - name: Set PHP version
               uses: shivammathur/setup-php@e04e1d97f0c0481c6e1ba40f8a538454fe5d7709 # v2.21.2
@@ -31,10 +31,10 @@ jobs:
 
             - name: Install JS dependencies
               run: |
-                  yarn
+                  npm install
 
             - name: Build
-              run: yarn workspaces run build
+              run: npm run build --workspaces
 
             - name: Ignore .gitignore
               run: |

@@ -87,7 +87,7 @@ function pattern_creator_init() {
 	$dir = dirname( __FILE__ );
 	$script_asset_path = "$dir/build/index.asset.php";
 	if ( ! file_exists( $script_asset_path ) ) {
-		throw new \Error( 'You need to run `yarn start` or `yarn build` for the Pattern Creator.' );
+		throw new \Error( 'You need to run `npm run start:creator` or `npm run build:creator` for the Pattern Creator.' );
 	}
 
 	$script_asset = require( $script_asset_path );

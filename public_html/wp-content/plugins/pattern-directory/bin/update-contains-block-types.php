@@ -3,7 +3,7 @@
  * Update all patterns with the "contains block types" meta field.
  *
  * To run locally, use `wp-env`, ex:
- * yarn wp-env run cli "php wp-content/plugins/pattern-directory/bin/update-contains-block-types.php --all --per_page=100 --apply"
+ * npm run wp-env run cli "php wp-content/plugins/pattern-directory/bin/update-contains-block-types.php --all --per_page=100 --apply"
  *
  * To run in a sandbox, use php directly, ex:
  * php ./bin/update-contains-block-types.php --all --apply

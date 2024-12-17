@@ -7,7 +7,7 @@
  * This adds the expected post meta and terms, and updates the author to wordpressdotorg.
  *
  * To run locally, use `wp-env`, ex:
- * yarn wp-env run cli "php wp-content/plugins/pattern-directory/bin/set-core-pattern.php --post=<id> --block_types=core/header"
+ * npm run wp-env run cli "php wp-content/plugins/pattern-directory/bin/set-core-pattern.php --post=<id> --block_types=core/header"
  *
  * To run in a sandbox, use php directly, ex:
  * php ./bin/set-core-pattern.php --post=<id> --block_types=core/header

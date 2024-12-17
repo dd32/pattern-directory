@@ -564,7 +564,7 @@ function enqueue_editor_assets() {
 
 	$script_asset_path = "$dir/build/pattern-post-type.asset.php";
 	if ( ! file_exists( $script_asset_path ) ) {
-		throw new Error( 'You need to run `yarn start` or `yarn build` for the Pattern Directory.' );
+		throw new Error( 'You need to run `npm run start:directory` or `npm run build:directory` for the Pattern Directory.' );
 	}
 
 	$script_asset = require $script_asset_path;

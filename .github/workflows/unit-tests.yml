@@ -37,24 +37,24 @@ jobs:
               uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
               with:
                   node-version-file: '.nvmrc'
-                  cache: yarn
+                  cache: npm
 
             - name: Install JS dependencies
               run: |
-                  yarn
+                  npm install
 
             - name: Build
-              run: yarn workspaces run build
+              run: npm run build --workspaces
 
             - name: Install WordPress
               run: |
                   chmod -R 767 ./ # TODO: Possibly integrate in wp-env
-                  yarn wp-env start --update
-                  yarn wp-env run tests-cli wp core version
-                  yarn wp-env run tests-cli wp plugin list
+                  npm run wp-env start --update
+                  npm run wp-env run tests-cli wp core version
+                  npm run wp-env run tests-cli wp plugin list
 
             - name: Running multisite unit tests
-              run: yarn test:php
+              run: npm run test:php
               if: ${{ success() || failure() }}
 
     unit-js:
@@ -70,7 +70,7 @@ jobs:
               uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
               with:
                   node-version-file: '.nvmrc'
-                  cache: yarn
+                  cache: npm
 
             - name: Set PHP version
               uses: shivammathur/setup-php@e04e1d97f0c0481c6e1ba40f8a538454fe5d7709 # v2.21.2
@@ -85,13 +85,13 @@ jobs:
 
             - name: Install JS dependencies
               run: |
-                  yarn
+                  npm
 
             - name: Build
-              run: yarn workspaces run build
+              run: npm run build --workspaces
 
             - name: Run unit tests on theme data store
-              run: yarn workspace wporg-pattern-directory-theme test:unit
+              run: npm run test:unit --workspace=wporg-pattern-directory-theme 
 
             - name: Run unit tests on the pattern creator
-              run: yarn workspace wporg-pattern-creator test:unit
+              run: npm run test:unit --workspace=wporg-pattern-creator 
