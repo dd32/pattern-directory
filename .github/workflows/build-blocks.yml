@@ -19,15 +19,19 @@ jobs:
             - name: Setup
               uses: WordPress/wporg-repo-tools/.github/actions/setup@trunk
               with:
+                packageManager: "npm"
                 token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Remove build artifacts
               run: |
                   rm -rf public_html/wp-content/themes/wporg-pattern-directory-2024/node_modules
+                  rm -rf public_html/wp-content/plugins/pattern-creator/node_modules
+                  rm -rf public_html/wp-content/plugins/pattern-directory/node_modules
 
             - name: Ignore .gitignore
               run: |
                   git add public_html/wp-content/themes/wporg-pattern-directory-2024/* --force
+                  git add public_html/wp-content/plugins/pattern-*/build --force
 
             - name: Append build number to version
               run: |
