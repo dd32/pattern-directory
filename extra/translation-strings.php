@@ -1,8 +1,9 @@
 <?php
+// phpcs:disable
 /**
  * Generated file for translation strings.
  *
- * Used to import additional strings into the pattern-directory translation project.
+ * Used to import additional strings into the GlotPress translation project.
  *
  * ⚠️ This is a generated file. Do not edit manually. See bin/i18n.php.
  * ⚠️ Do not require or include this file anywhere.
@@ -61,8 +62,8 @@ _x( 'Rude, Crude, or Inappropriate', 'Flag Reasons term name', 'wporg-patterns' 
 _x( 'This pattern contains content deemed inappropriate for a general audience.', 'Flag Reasons term description', 'wporg-patterns' );
 _x( 'Spam', 'Flag Reasons term name', 'wporg-patterns' );
 _x( 'This pattern was determined to be spam.', 'Flag Reasons term description', 'wporg-patterns' );
-_x( 'Pattern Directory', 'Page title', 'wporg-patterns' );
-_x( 'About Patterns', 'Page title', 'wporg-patterns' );
-_x( 'Favorites', 'Page title', 'wporg-patterns' );
-_x( 'My Patterns', 'Page title', 'wporg-patterns' );
-_x( 'New Pattern', 'Page title', 'wporg-patterns' );
+_x( 'Pattern Directory', 'page title', 'wporg-patterns' );
+_x( 'About Patterns', 'page title', 'wporg-patterns' );
+_x( 'Favorites', 'page title', 'wporg-patterns' );
+_x( 'My Patterns', 'page title', 'wporg-patterns' );
+_x( 'New Pattern', 'page title', 'wporg-patterns' );
