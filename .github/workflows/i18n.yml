@@ -21,6 +21,10 @@ jobs:
                 token: ${{ secrets.GITHUB_TOKEN }}
                 args: --taxonomies=wporg-pattern-category,wporg-pattern-flag-reason --post_types=page --url=https://wordpress.org/patterns/wp-json/wp/v2/ --textdomain=wporg-patterns
 
+            - name: Update the translation context
+              run: |
+                sed -i "s/, 'page title'/, 'Page title'/" extra/translation-strings.php
+
             - name: Commit and push
               # Using a specific hash here instead of a tagged version, for risk mitigation, since this action modifies our repo.
               uses: actions-js/push@a52398fac807b0c1e5f1492c969b477c8560a0ba
