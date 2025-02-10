@@ -69,6 +69,10 @@ function pattern_import_translations_to_directory( $pattern_ids = array() ) {
 	remove_action( 'registered_post_type', 'gutenberg_block_core_navigation_link_register_post_type_variation' );
 	remove_action( 'registered_taxonomy', 'gutenberg_block_core_navigation_link_register_taxonomy_variation' );
 
+	// Raise the memory limit for this process to at least 512M.
+	add_filter( 'cron_memory_limit', function() { return '512M'; } );
+	wp_raise_memory_limit( 'cron' );
+
 	$locales = get_locales();
 
 	printf( "Processing %d Patterns in %d locales.\n", count( $pattern_ids ), count( $locales ) );
